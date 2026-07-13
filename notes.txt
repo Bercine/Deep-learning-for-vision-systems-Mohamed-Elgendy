@@ -1,0 +1,57 @@
+Chap 5 : Advanced CNN architectures
+This chapter covers
+- Working with CNN design patterns
+- Understanding the LeNet, AlexNet, VGGNet, 
+Inception, and ResNet network architectures
+- vanishing gradient problem
+
+
+
+
+Chap6 : Transfer learning
+This chapter covers
+- Understanding the transfer learning technique
+- Using a pretrained network to solve your problem 
+- Understanding network fine-tuning
+- Exploring open source image datasets for training 
+   a model
+- Building two end-to-end transfer learning projects
+
+
+- The transferability of features that are extracted at later layers depends on the similar
+ity of the original and new datasets.
+-  The source domain is the original dataset that the pretrained net
+work is trained on. The target domain is the new dataset that we want to train
+the network on.
+- There are three major transfer learning approaches: pretrained network as a classifier,
+pretrained network as a feature extractor, and fine-tuning.
+
+- choosing the appropriate level for transfer learning is a func
+tion of two important factors:
+	-  Size of the target dataset (small or large)
+	-  Domain similarity of the source and target datasets
+
+These two factors lead to the four major scenarios:
+1 The target dataset is small and similar to the source dataset. -> solution : Pretrained network as a feature extractor
+2 The target dataset is large and similar to the source dataset. -> solution : Fine-tune through the full network
+3 The target dataset is small and very different from the source dataset. -> solution : Fine-tune from activations earlier in the network 
+4 The target dataset is large and very different from the source dataset. -> solution : Fine-tune through the entire network
+
+
+
+Chapter 7 : Object detection with R-CNN, SDD, and YOLO
+- Understanding image classification vs. object 
+detection
+- Understanding the general framework of object 
+detection projects
+- Using object detection algorithms like R-CNN, 
+SSD, and YOLO
+
+Typically, an object detection framework has four components:
+- Region proposal : An algorithm or a DL model is used to generate regions of
+interest (RoIs) to be further processed by the system. 
+- Feature extraction and network predictions
+- Non-maximum suppression (NMS) :  NMS helps avoid repeated detection of the same instance by 
+combining overlapping boxes into a single bounding box
+for each object.
+- Evaluation metrics : mean average precision (mAP), precision-recall curve (PR curve), and intersection over union (IoU).
