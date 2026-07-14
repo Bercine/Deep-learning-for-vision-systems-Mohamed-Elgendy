@@ -55,3 +55,62 @@ interest (RoIs) to be further processed by the system.
 combining overlapping boxes into a single bounding box
 for each object.
 - Evaluation metrics : mean average precision (mAP), precision-recall curve (PR curve), and intersection over union (IoU).
+
+Object-detector evaluation metrics:
+- FRAMES PER SECOND (FPS) TO MEASURE DETECTION SPEED 
+- MEAN AVERAGE PRECISION (MAP) TO MEASURE NETWORK PRECISION
+- INTERSECTION OVER UNION (IOU) 
+- PRECISION-RECALL CURVE (PR CURVE)
+- RECAP
+
+
+Region-based convolutional neural networks (R-CNNs):
+The R-CNN model consists of four components:
+- Extract regions of interest : An algorithm called selective
+search scans the input image to find regions that contain blobs, and proposes
+them as RoIs to be processed by the next modules in the pipeline.
+- Feature extraction module
+- Classification module : We train a classifier like a support vector machine (SVM),
+a traditional machine learning algorithm, to classify candidate detections based
+on the extracted features from the previous step. 
+- Localization module - Also known as a bounding-box regressor : 
+
+Selective search:
+Selective search is a greedy search algorithm that is used to provide region proposals
+that potentially contain objects.
+
+the R-CNN architecture in an intuitive way:
+1- Selective search algorithm is used to extract RoIs from the input image.
+2- Extracted regions are warped before being fed to the ConvNet.
+3- Forward each region through the pretrained ConvNet to extract features.
+4- The network produces bounding-box and classification predictions.
+
+TRAINING R-CNNS:
+- Train the feature extractor CNN
+- Train the SVM classifier
+- Train the bounding-box regressors
+
+DISADVANTAGES OF R-CNN:
+- Object detection is very slow
+- Training is a multi-stage pipeline
+- Training is expensive in terms of space and time
+
+Fast R-CNN : 
+In Fast R-CNN, you first pass the entire image through the CNN once, 
+then extract region proposals from the resulting feature map. This replaces 
+the 2,000 separate CNN passes in R-CNN. Also,
+ Fast R-CNN uses a Softmax layer for classification directly in the network,
+  instead of a separate SVM.
+
+The architecture of Fast R-CNN consists of the following modules :
+- Feature extractor module : The network starts with a ConvNet to extract features from the full image. 
+- RoI extractor : The selective search algorithm proposes about 2,000 region candidates per image. 
+- RoI pooling layer :  it is applied on the last feature map layer extracted
+from the CNN, and its goal is to extract fixed-size RoIs to feed to the fully connected layers and then the output layers.
+- Two-head output layer : The model branches into two heads:
+1- A softmax classifier layer that outputs a discrete probability distribution per RoI
+2– A bounding-box regressor layer to predict offsets relative to the original 
+
+
+J'ai sauté de : MULTI-TASK LOSS FUNCTION IN FAST R-CNNS
+à la page 320 directement : 
