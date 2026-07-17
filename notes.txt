@@ -112,5 +112,45 @@ from the CNN, and its goal is to extract fixed-size RoIs to feed to the fully co
 2– A bounding-box regressor layer to predict offsets relative to the original 
 
 
-J'ai sauté de : MULTI-TASK LOSS FUNCTION IN FAST R-CNNS
-à la page 320 directement : 7.4 You only look once (YOLO)
+VGGNet vs. ResNet
+Nowadays, ResNet architectures have mostly replaced VGG as a base network for
+extracting features. The obvious advantage of ResNet over VGG is that it has many
+more layers (is deeper), giving it more capacity to learn very complex features. 
+
+REGION PROPOSAL NETWORK (RPN)
+The RPN identifies regions that could potentially contain objects of interest, based on
+the last feature map of the pretrained convolutional neural network.
+Faster R-CNN uses an RPN to bake the region proposal
+directly into the R-CNN architecture instead of running a selective search algorithm
+to extract RoIs. 
+The architecture of the RPN is composed of two layers (figure 7.12):
+-A 3 × 3 fully convolutional layer with 512 channels
+- Two parallel 1 × 1 convolutional layers: a classification layer that is used to pre
+dict whether the region contains an object (the score of it being background or
+foreground), and a layer for regression or bounding box prediction.
+
+Fully convolutional networks (FCNs)
+A fully convolutional neural network means that the network does not contain
+any fully connected layers, typically found at the end of a network prior to making out
+put predictions.
+An FCN has two main
+benefits:
+- It is faster because it contains only convolution operations and no fully con
+nected layers.
+- It can accept images of any spatial resolution (width and height), provided the
+image and network can fit into the available memory.
+
+
+RPN as a standalone application
+...For example, in problems with a
+single class of objects, the objectness probability can be used as the final class prob
+ability....
+...The reason you would want to use RPN for cases like single-class detection is the
+gain in speed in both training and prediction. Since the RPN is a very simple network
+that only uses convolutional layers, the prediction time can be faster than using the
+classification base network...
+
+
+j'ai sauté de 7.3.1 High-level SSD architecture
+ à 7.4
+You only look once (YOLO)
